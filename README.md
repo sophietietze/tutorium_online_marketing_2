@@ -30,10 +30,16 @@ Prompting: Role-based system instructions to enforce professional personas.
 Step-by-step instructions
 Clone the repository
 
+
+```bash
+cd automated-research-example
+```
+
 ```bash
 git clone https://github.com/kirenz/google-adk-first-agent.git
-cd automated-research-example
-Sync the Python environment
+```
+```bash
+cd google-adk-first-agent.git
 ```
 
 ```bash
@@ -41,14 +47,40 @@ uv sync
 ```
 This installs all required packages (Google AI SDK, dotenv, etc.) in an isolated environment managed by uv.
 
-Prepare your environment variables
+1. Überprüfen, was da ist
+
+Schau kurz nach, welche Dateien im Ordner liegen:
 
 ```bash
-cp .env.example .env
+ls -a
 ```
-Configure your API Key Open the new .env file in VS Code and replace the placeholder with your Google AI Studio API Key: GOOGLE_API_KEY=your_actual_key_here
+(Wahrscheinlich siehst du keine .env.example, weshalb der Fehler auftritt.)
 
-Run the Research Agent
+# Configuring Gemini API
+
+Gib diesen Befehl in deinem Terminal im Ordner first_agent ein:
+
+```bash
+mv .env.example .env
+```
+
+Was dieser Befehl macht:
+
+mv: Steht für "move". Da du die Datei im selben Ordner lässt, aber den Namen änderst, fungiert es als "Umbenennen".
+
+.env.example: Der aktuelle Name (Quelle).
+
+.env: Der neue Name (Ziel).
+
+# Add your API key:
+
+```bash
+GEMINI_API_KEY=YourApiKeyHere
+```
+
+Important: The .env file is already included in .gitignore and will not be committed to the repository, keeping your key private.
+
+# Run the Research Agent
 
 ```bash
 uv run python research_agent.py
